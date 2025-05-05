@@ -1,61 +1,123 @@
-import tkinter as tk
-from tkinter import messagebox
-import os
-import sys
-import shutil
-import threading
+from flet import *
+
+def main(page: Page):
+    page.title = "xnxx"
+    page.window.width = 340
+    page.window.left = 930
+    page.window.height = 740
+    page.window.top = 10
 
 
-# تحديد مسار التطبيق
-path_app = os.path.abspath(sys.argv[0])
+    def route_change(route):
+        page.views.clear()
 
-# تحديد مجلد البداية في قائمة "ابدأ"
-run_start = os.path.join(os.getenv("APPDATA"), "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
-name = os.path.join(run_start, "oday.exe")
+        if page.route == "/":
+            page.bgcolor = colors.BLUE_800
+            page.views.append(
+                View(
+                    route="/",
+                    controls=[
+                        AppBar(
+                            bgcolor=colors.BLUE_900,
+                            title=Text("XＮXX.COM"),
+                            center_title=True,
+                            color=colors.BLUE_100,
+                            leading=Icon(icons.HOME),
+                            actions=[
+                                IconButton(icons.NOTIFICATIONS),
+                                PopupMenuButton(
+                                    items=[
+                                        PopupMenuItem(
+                                            text="b4iti dakchi 4k",
+                                            on_click=lambda e: page.go("/b4iti_dakchi_4k")
+                                        ),
+                                        PopupMenuItem(
+                                            text="من نحن",
+                                            on_click=lambda e: page.go("/about")
+                                        )
+                                    ]
+                                )
+                            ]
+                        ),
+                        TextField(
+                            label="search for your video",
+                            icon="search",
+                            fill_color="white",
+                            height=40,
+                            width=300
+                        ),
+                        Container(
+                            content=Image(
+                                src='photo/mia.png',
+                                width=200,
+                                border_radius=20,
+                                tooltip="عمتك"
+                            ),
+                            height=340,
+                            alignment=alignment.center
+                        ),
+                        Text(
+                            "النجمة اللبنانية ميا خليفة ، دخلت المجال الفني بالباب الخلفي ، هناك من يسميها زانية أو قحبة ، و لكن في الأصل هي فنانة و صانعة محتوى و عارضة أزياء ، و لهذا استغفروا الله فيما تقولون",
+                            color=colors.BLUE_800,
+                            text_align=TextAlign.CENTER,
+                            size=15
+                        ),
+                        Row(
+                            controls=[
+                                ElevatedButton(
+                                    text="صور ميا خليفة بالحجاب",
+                                    on_click=lambda e: page.go("/second")
+                                )
+                            ],
+                            alignment=MainAxisAlignment.CENTER
+                        )
+                    ]
+                )
+            )
 
-# إذا لم يكن التطبيق موجودًا في المجلد، قم بنسخه
-if not os.path.exists(name):
-    shutil.copy(path_app, name)
+        elif page.route == "/second":
+            page.bgcolor = colors.INDIGO_500
+            page.views.append(
+                View(
+                    route="/second",
+                    controls=[
+                        AppBar(title=Text("الصفحة الثانية")),
+                        Text("A FIN A WLD L9HBA", color="white"),
+                        Image(src="photo/nod.png", height=300, width=300),
+                        ElevatedButton(text="RJ3 T9WD", on_click=lambda e: page.go("/")),
+                    ]
+                )
+            )
 
-# دالة للخروج من التطبيق
-def exit_app():
-    root.destroy()
+        elif page.route == "/about":
+            page.bgcolor = colors.BLUE_GREY_900
+            page.views.append(
+                View(
+                    route="/about",
+                    controls=[
+                        AppBar(title=Text("من نحن")),
+                        Image(src="photo/joni.png", height=300, width=300),
+                        ElevatedButton(text="rj3 t9wd", on_click=lambda e: page.go("/"))
+                    ]
+                )
+            )
 
-# دالة للتحقق من المفتاح المدخل
-def clos(event=None):
-    key = "1234567"
-    if entry.get() == key:
-        exit_app()
-    else:
-        messagebox.showerror("Don't play with me", "The key is wrong")
+        elif page.route == "/b4iti_dakchi_4k":
+            page.bgcolor = colors.BLUE_900
+            page.views.append(
+                View(
+                    route="/b4iti_dakchi_4k",
+                    controls=[
+                        AppBar(title=Text("b4iti dakchi 4k")),
+                        Image(src="photo/mak.png", height=300, width=400),
+                        ElevatedButton(text="rj3 t9wd", on_click=lambda e: page.go("/"))
+                    ]
+                )
+            )
 
-# إعداد واجهة المستخدم
-root = tk.Tk()
+        page.update()
 
-# إخفاء إطار النافذة
-root.overrideredirect(True)
-root.attributes("-topmost", True)
+    page.on_route_change = route_change
+    page.go(page.route)
 
-# إضافة النصوص والعناصر
-tk.Label(root, text="Enter the key from hacker:", bg="green", fg="black").pack()
-
-entry = tk.Entry(root, width=50, border=0)
-entry.pack(pady=20)
-
-b = tk.Button(root, text="Submit", command=clos)
-b.pack()
-
-root.config(background="green")
-root.resizable(False, False)
-
-# جعل نافذة التطبيق تغطي الشاشة بالكامل
-root.geometry(f"{root.winfo_screenwidth()}x{root.winfo_screenheight()}+0+0")
-root.title("Keno")
-
-tk.Label(root, text="hack@gmail.com", bg="green", fg="black").pack(pady=20)
-
-# استدعاء الدالة clos عند الضغط على Enter أو الزر Submit
-entry.bind("<Return>", clos)
-
-# تشغيل نافذة tkinter
-root.mainloop()
+app(main)
