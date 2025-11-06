@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}CV Builder - ProCV Builder{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/builder.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Builder Section -->
+<section class="builder-section">
+    <div class="builder-container">
+        <!-- Left Panel: Form -->
+        <div class="builder-panel builder-form-panel">
+            <div class="panel-header">
+                <h2 class="panel-title" data-i18n="builder.form.title">Build Your CV</h2>
+                <div class="panel-actions">
+                    <select class="template-selector" id="templateSelector">
+                        <option value="modern" data-i18n="templates.modern.name">Modern Professional</option>
+                        <option value="classic" data-i18n="templates.classic.name">Classic Elegant</option>
+                        <option value="creative" data-i18n="templates.creative.name">Creative Bold</option>
+                        <option value="minimal" data-i18n="templates.minimal.name">Minimal Clean</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-content">
+                <form id="cvForm">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title" data-i18n="builder.form.personal">Personal Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="fullName" data-i18n="builder.form.fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobTitle" data-i18n="builder.form.jobTitle">Job Title</label>
+                            <input type="text" id="jobTitle" class="form-control" placeholder="Software Engineer" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" data-i18n="builder.form.email">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" data-i18n="builder.form.phone">Phone</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="+1 234 567 8900" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="location" data-i18n="builder.form.location">Location</label>
+                                <input type="text" id="location" class="form-control" placeholder="New York, USA">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="website" data-i18n="builder.form.website">Website/Portfolio</label>
+                                <input type="url" id="website" class="form-control" placeholder="www.johndoe.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Summary -->
+                    <div class="form-section">
+                        <h3 class="form-section-title" data-i18n="builder.form.summary">Professional Summary</h3>
+                        
+                        <div class="form-group">
+                            <label for="summary" data-i18n="builder.form.summaryLabel">Summary</label>
+                            <textarea id="summary" class="form-control" rows="4" placeholder="Brief description of your professional background and career objectives..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="form-section">
+                        <h3 class="form-section-title" data-i18n="builder.form.skills">Skills</h3>
+                        
+                        <div class="form-group">
+                            <label for="skills" data-i18n="builder.form.skillsLabel">Skills (comma separated)</label>
+                            <textarea id="skills" class="form-control" rows="3" placeholder="JavaScript, Python, React, Node.js, SQL, Git"></textarea>
+                            <small class="form-hint" data-i18n="builder.form.skillsHint">Separate each skill with a comma</small>
+                        </div>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h3 class="form-section-title" data-i18n="builder.form.experience">Work Experience</h3>
+                            <button type="button" class="btn btn-small btn-secondary" id="addExperience">
+                                <span data-i18n="builder.form.addExperience">+ Add Experience</span>
+                            </button>
+                        </div>
+                        
+                        <div id="experienceContainer">
+                            <div class="experience-item" data-index="0">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.expJobTitle">Job Title</label>
+                                        <input type="text" class="form-control exp-title" placeholder="Senior Developer">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.expCompany">Company</label>
+                                        <input type="text" class="form-control exp-company" placeholder="Tech Corp">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.expStart">Start Date</label>
+                                        <input type="text" class="form-control exp-start" placeholder="Jan 2020">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.expEnd">End Date</label>
+                                        <input type="text" class="form-control exp-end" placeholder="Present">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="builder.form.expDescription">Description</label>
+                                    <textarea class="form-control exp-description" rows="3" placeholder="Key responsibilities and achievements..."></textarea>
+                                </div>
+                                <button type="button" class="btn btn-small btn-danger remove-experience" data-i18n="builder.form.remove">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h3 class="form-section-title" data-i18n="builder.form.education">Education</h3>
+                            <button type="button" class="btn btn-small btn-secondary" id="addEducation">
+                                <span data-i18n="builder.form.addEducation">+ Add Education</span>
+                            </button>
+                        </div>
+                        
+                        <div id="educationContainer">
+                            <div class="education-item" data-index="0">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.eduDegree">Degree</label>
+                                        <input type="text" class="form-control edu-degree" placeholder="Bachelor of Science">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.eduSchool">School/University</label>
+                                        <input type="text" class="form-control edu-school" placeholder="University Name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.eduStart">Start Year</label>
+                                        <input type="text" class="form-control edu-start" placeholder="2016">
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-i18n="builder.form.eduEnd">End Year</label>
+                                        <input type="text" class="form-control edu-end" placeholder="2020">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-small btn-danger remove-education" data-i18n="builder.form.remove">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="clearForm" data-i18n="builder.form.clear">
+                            Clear All
+                        </button>
+                        <button type="button" class="btn btn-primary" id="downloadPDF" data-i18n="builder.form.download">
+                            📥 Download PDF
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Panel: Preview -->
+        <div class="builder-panel builder-preview-panel">
+            <div class="panel-header">
+                <h2 class="panel-title" data-i18n="builder.preview.title">Live Preview</h2>
+                <div class="preview-zoom">
+                    <button class="zoom-btn" id="zoomOut" aria-label="Zoom out">-</button>
+                    <span class="zoom-level" id="zoomLevel">100%</span>
+                    <button class="zoom-btn" id="zoomIn" aria-label="Zoom in">+</button>
+                </div>
+            </div>
+
+            <div class="preview-content" id="previewContent">
+                <div id="cvPreview" class="cv-preview">
+                    <!-- CV Preview will be rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/builder.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}CV Templates - ProCV Builder{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title" data-i18n="templates.header.title">Professional CV Templates</h1>
+        <p class="page-subtitle" data-i18n="templates.header.subtitle">
+            Choose from our collection of beautifully designed templates
+        </p>
+    </div>
+</section>
+
+<!-- Templates Grid -->
+<section class="templates-section">
+    <div class="container">
+        <div class="templates-grid">
+            <!-- Template 1: Modern -->
+            <div class="template-card">
+                <div class="template-preview">
+                    <div class="template-preview-content template-modern">
+                        <div class="template-header-preview">
+                            <div class="template-name-preview">John Doe</div>
+                            <div class="template-title-preview">Software Engineer</div>
+                        </div>
+                        <div class="template-section-preview">
+                            <div class="template-section-title">Summary</div>
+                            <div class="template-lines">
+                                <div class="template-line"></div>
+                                <div class="template-line"></div>
+                            </div>
+                        </div>
+                        <div class="template-section-preview">
+                            <div class="template-section-title">Experience</div>
+                            <div class="template-lines">
+                                <div class="template-line"></div>
+                                <div class="template-line short"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h3 class="template-name" data-i18n="templates.modern.name">Modern Professional</h3>
+                    <p class="template-description" data-i18n="templates.modern.description">
+                        Clean and modern design with a professional look. Perfect for tech and creative industries.
+                    </p>
+                    <a href="/builder?template=modern" class="btn btn-primary" data-i18n="templates.useTemplate">
+                        Use This Template
+                    </a>
+                </div>
+            </div>
+
+            <!-- Template 2: Classic -->
+            <div class="template-card">
+                <div class="template-preview">
+                    <div class="template-preview-content template-classic">
+                        <div class="template-header-preview classic">
+                            <div class="template-name-preview">Jane Smith</div>
+                            <div class="template-title-preview">Marketing Manager</div>
+                        </div>
+                        <div class="template-section-preview">
+                            <div class="template-section-title">Professional Summary</div>
+                            <div class="template-lines">
+                                <div class="template-line"></div>
+                                <div class="template-line"></div>
+                            </div>
+                        </div>
+                        <div class="template-section-preview">
+                            <div class="template-section-title">Work Experience</div>
+                            <div class="template-lines">
+                                <div class="template-line"></div>
+                                <div class="template-line short"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h3 class="template-name" data-i18n="templates.classic.name">Classic Elegant</h3>
+                    <p class="template-description" data-i18n="templates.classic.description">
+                        Traditional and elegant design. Ideal for corporate and formal positions.
+                    </p>
+                    <a href="/builder?template=classic" class="btn btn-primary" data-i18n="templates.useTemplate">
+                        Use This Template
+                    </a>
+                </div>
+            </div>
+
+            <!-- Template 3: Creative -->
+            <div class="template-card">
+                <div class="template-preview">
+                    <div class="template-preview-content template-creative">
+                        <div class="template-sidebar-preview">
+                            <div class="template-avatar-preview"></div>
+                            <div class="template-contact-preview">
+                                <div class="template-line short"></div>
+                                <div class="template-line short"></div>
+                            </div>
+                        </div>
+                        <div class="template-main-preview">
+                            <div class="template-name-preview">Alex Johnson</div>
+                            <div class="template-title-preview">Graphic Designer</div>
+                            <div class="template-section-preview">
+                                <div class="template-lines">
+                                    <div class="template-line"></div>
+                                    <div class="template-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h3 class="template-name" data-i18n="templates.creative.name">Creative Bold</h3>
+                    <p class="template-description" data-i18n="templates.creative.description">
+                        Eye-catching design with sidebar layout. Great for designers and creative professionals.
+                    </p>
+                    <a href="/builder?template=creative" class="btn btn-primary" data-i18n="templates.useTemplate">
+                        Use This Template
+                    </a>
+                </div>
+            </div>
+
+            <!-- Template 4: Minimal -->
+            <div class="template-card">
+                <div class="template-preview">
+                    <div class="template-preview-content template-minimal">
+                        <div class="template-header-preview minimal">
+                            <div class="template-name-preview">Sarah Williams</div>
+                            <div class="template-title-preview">Data Analyst</div>
+                        </div>
+                        <div class="template-section-preview">
+                            <div class="template-section-title">About</div>
+                            <div class="template-lines">
+                                <div class="template-line"></div>
+                            </div>
+                        </div>
+                        <div class="template-section-preview">
+                            <div class="template-section-title">Experience</div>
+                            <div class="template-lines">
+                                <div class="template-line"></div>
+                                <div class="template-line short"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-info">
+                    <h3 class="template-name" data-i18n="templates.minimal.name">Minimal Clean</h3>
+                    <p class="template-description" data-i18n="templates.minimal.description">
+                        Simple and clean design focusing on content. Perfect for any industry.
+                    </p>
+                    <a href="/builder?template=minimal" class="btn btn-primary" data-i18n="templates.useTemplate">
+                        Use This Template
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Banner -->
+<section class="features-banner">
+    <div class="container">
+        <h2 class="section-title" data-i18n="templates.features.title">All Templates Include</h2>
+        <div class="features-list">
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span data-i18n="templates.features.pdf">PDF Download</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span data-i18n="templates.features.customizable">Fully Customizable</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span data-i18n="templates.features.responsive">Mobile Responsive</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span data-i18n="templates.features.preview">Live Preview</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
